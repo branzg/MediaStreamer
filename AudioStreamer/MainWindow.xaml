@@ -1,0 +1,16 @@
+﻿<Window x:Class="AudioPlayer.Program"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main" Height="381" Width="392"
+        MinWidth="300" SizeToContent="WidthAndHeight">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="351" VerticalAlignment="Top" Width="384">
+            <TabItem Header="Server" Height="23" VerticalAlignment="Bottom">
+                <Button Content="Start" Height="100" Margin="98,108,126,108" Click="Button_Click"/>
+            </TabItem>
+            <TabItem Header="Client">
+                <Button Content="Connect" Height="100" Margin="98,0,96,0" Click="Button_Click_1"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
