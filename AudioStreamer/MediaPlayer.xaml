@@ -37,7 +37,7 @@
             </Button>
         </ToolBar>
 
-        <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None" />
+        <MediaElement Name="mediaPlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None" />
 
         <StatusBar Grid.Row="2">
             <StatusBar.ItemsPanel>
@@ -58,7 +58,7 @@
                 <Slider Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
             </StatusBarItem>
             <StatusBarItem Grid.Column="2">
-                <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" />
+                <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mediaPlayer, Path=Volume}" />
             </StatusBarItem>
         </StatusBar>
     </Grid>

@@ -6,10 +6,14 @@
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="351" VerticalAlignment="Top" Width="384">
             <TabItem Header="Server" Height="23" VerticalAlignment="Bottom">
-                <Button Content="Start" Height="100" Margin="98,108,126,108" Click="Button_Click"/>
+                <Canvas HorizontalAlignment="Left" Height="280" Margin="22,7,0,0" VerticalAlignment="Top" Width="334">
+                    <Button Content="Initiate Server" Canvas.Left="102" Canvas.Top="99" Width="120" Click="Button_Click_2" Focusable="False" Height="60"/>
+                </Canvas>
             </TabItem>
             <TabItem Header="Client">
-                <Button Content="Connect" Height="100" Margin="98,0,96,0" Click="Button_Click_1"/>
+                <Canvas HorizontalAlignment="Left" Height="262" Margin="19,10,0,0" VerticalAlignment="Top" Width="328">
+                    <Button Content="Play Stream" Canvas.Left="77" Canvas.Top="73" Width="155" Click="Button_Click" Height="84"/>
+                </Canvas>
             </TabItem>
         </TabControl>
     </Grid>

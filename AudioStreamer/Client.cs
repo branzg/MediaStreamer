@@ -6,54 +6,59 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.IO;
 using System.Net;
+using System.Threading;
+using NAudio.Wave;
 
 namespace AudioPlayer
 {
+
     class TCPClient
     {
-        public void Client()
+        private Stream ms = new MemoryStream();
+        public void PlayMp3FromServer()
         {
-
+            new Thread(delegate(object o)
             {
-
-                TcpClient tcpClient = new TcpClient("192.168.101.124", 8888);
+                TcpClient tcpClient = new TcpClient("192.168.101.124", 8885);
                 Console.WriteLine("Connected.");
-                //MediaPlayer player = new MediaPlayer();
                 StreamReader reader = new StreamReader(tcpClient.GetStream());
 
-                string cmdFileSize = reader.ReadLine();
-                string cmdFileName = reader.ReadLine();
-
-                int length = Convert.ToInt32(cmdFileSize);
-                byte[] buffer = new byte[length];
-                int received = 0;
-                int read = 0;
-                int size = 1024;
-                int remaining = 0;
-
-                while (received < length)
+                byte[] buffer = new byte[65536];
+                int read;
+                while ((read = tcpClient.GetStream().Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    remaining = length - received;
-                    if (remaining < size)
-                    {
-                        size = remaining;
-                    }
+                    var pos = ms.Position;
+                    ms.Position = ms.Length;
+                    ms.Write(buffer, 0, read);
+                    ms.Position = pos;
+                   // Thread.Sleep(2000); 
+                    Console.WriteLine(Convert.ToString(ms.Length));
 
-                    read = tcpClient.GetStream().Read(buffer, received, size);
-                    received += read;
                 }
-                using (FileStream fStream = new FileStream(Path.GetFileName(cmdFileName), FileMode.Create))
-                {                  
-                    fStream.Write(buffer, 0, buffer.Length);
-                    fStream.Flush();
-                    fStream.Close();               
+            }).Start();
+            while (ms.Length < 65536)
+                Thread.Sleep(1000);
+
+            ms.Position = 0;
+            using (WaveStream blockAlignedStream = new BlockAlignReductionStream(WaveFormatConversionStream.CreatePcmStream(new Mp3FileReader(ms))))
+            {
+                using (WaveOut waveOut = new WaveOut(WaveCallbackInfo.FunctionCallback()))
+                {
+                    waveOut.Init(blockAlignedStream);
+                    while (true)
+                    {
+                        if (ms.Position < ms.Length - 65536)
+                        {
+                            waveOut.Play();
+                            Console.WriteLine("playing");
+                        }
+                        while (waveOut.PlaybackState == PlaybackState.Playing)
+                        {
+                            System.Threading.Thread.Sleep(100);
+                        }
+                    }
                 }
-                
-                Console.WriteLine("File received");
-               // player.Show();
-              //  player.PlayStream(cmdFileName);
             }
         }
     }
 }
-

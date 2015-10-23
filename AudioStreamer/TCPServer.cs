@@ -9,15 +9,14 @@ using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Web;
 
-
 namespace AudioPlayer
 {
     public class TCPServer
     {
+
         public void Server()
         {
-
-            TcpListener tcpListener = new TcpListener(IPAddress.Any, 8888);
+            TcpListener tcpListener = new TcpListener(IPAddress.Any, 8885);
             tcpListener.Start();
 
             Console.WriteLine("Server started");
@@ -26,13 +25,10 @@ namespace AudioPlayer
             {
 
                 TcpClient tcpClient = tcpListener.AcceptTcpClient();
-
                 Console.WriteLine("Connected to client");
-                //  Console.WriteLine("Please enter a full file path");
+
                 try
                 {
-                    //string fileName = Console.ReadLine();
-
                     string fileName = @"C:\Users\bguild_be\Desktop\Maids.mp3";
                     StreamWriter sWriter = new StreamWriter(tcpClient.GetStream());
 
@@ -46,16 +42,14 @@ namespace AudioPlayer
 
                     Console.WriteLine("Sending file");
                     tcpClient.Client.SendFile(fileName);
-
                 }
                 catch (Exception e)
                 {
                     Console.Write(e.Message);
                 }
 
-                Console.Read();
-
-
+                Console.WriteLine("Sending Complete");
+                break;
             }
         }
     }

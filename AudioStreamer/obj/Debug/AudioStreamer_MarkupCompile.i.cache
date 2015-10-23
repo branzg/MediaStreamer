@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\bguild_be\Documents\Visual Studio 2013\Projects\AudioStreamer\AudioStreamer\obj\Debug\
+C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\
 AudioStreamer
 none
 false
 DEBUG;TRACE
-C:\Users\bguild_be\Documents\Visual Studio 2013\Projects\AudioStreamer\AudioStreamer\App.xaml
-2-1931493806
+C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\App.xaml
+3398825480
 1408099410
-12-2018932917
-15-1035126464
-MainWindow.xaml;MediaPlayer.xaml;
+13-766730520
+18-1365700388
+ClientPlayer.xaml;MainWindow.xaml;MediaPlayer.xaml;
 
 False
 

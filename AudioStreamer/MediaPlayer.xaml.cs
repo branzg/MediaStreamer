@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
@@ -9,27 +10,29 @@ namespace AudioPlayer
 {
     public partial class MediaPlayer : Window
     {
-        //BFT TODO: Inititalize member variables in constructor, not in declaration
-        private bool mediaPlayerIsPlaying = false;
-        private bool userIsDraggingSlider = false;
+        private bool mediaPlayerIsPlaying;
+        private bool userIsDraggingSlider;
 
         public MediaPlayer()
         {
-            InitializeComponent();
+            InitializeComponent();           
+            mediaPlayerIsPlaying = false;
+            userIsDraggingSlider = false;
+            
             //BFT TODO: Make this variable a member variable
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-        }
+        }  
         private void timer_Tick(object sender, EventArgs e)
         {
             //BFT TODO: Name mePlayer something more descriptive
-            if ((mePlayer.Source != null) && (mePlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
-            {
+            if ((mediaPlayer.Source != null) && (mediaPlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
+            { 
                 sliProgress.Minimum = 0;
-                sliProgress.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
-                sliProgress.Value = mePlayer.Position.TotalSeconds;
+                sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+                sliProgress.Value = mediaPlayer.Position.TotalSeconds;
             }
         }
 
@@ -38,22 +41,24 @@ namespace AudioPlayer
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Media files (*.wmv,*.mp3;*.mpg;*.mpeg)|*.wmv;*.mp3;*.mpg;*.mpeg|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
-                mePlayer.Source = new Uri(openFileDialog.FileName);
+                mediaPlayer.Source = new Uri(openFileDialog.FileName);
         }
-        public void PlayStream(string fileName)
-        {
-                
-                mePlayer.Source = new Uri(fileName);
-        }
+        //public void PlayStream(fileName)
+        //{
+           
+        //    //mediaPlayer.Source = new Uri(fileName);
+        //    mediaPlayer.Play();
+        //    mediaPlayerIsPlaying = true;
+        //}
 
         private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = (mePlayer != null) && (mePlayer.Source != null);
+            e.CanExecute = (mediaPlayer != null) && (mediaPlayer.Source != null);
         }
 
         private void Play_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            mePlayer.Play();
+            mediaPlayer.Play();
             mediaPlayerIsPlaying = true;
         }
 
@@ -64,7 +69,7 @@ namespace AudioPlayer
 
         private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            mePlayer.Pause();
+            mediaPlayer.Pause();
         }
 
         private void Stop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -74,7 +79,7 @@ namespace AudioPlayer
 
         private void Stop_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            mePlayer.Stop();
+            mediaPlayer.Stop();
             mediaPlayerIsPlaying = false;
         }
 
@@ -86,7 +91,7 @@ namespace AudioPlayer
         private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
         {
             userIsDraggingSlider = false;
-            mePlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
+            mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
         }
 
         private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -96,8 +101,7 @@ namespace AudioPlayer
 
         private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            mePlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+            mediaPlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
         }
-
     }
 }
