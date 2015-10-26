@@ -13,12 +13,10 @@ namespace AudioPlayer
 {
    
     class AudioStream
-    {
-
-        
+    {       
         public string loadProgress;
         private WaveOut waveOut;
-        public Stream ms;
+        private Stream ms;
         public WaveStream blockAlignedStream;
         public AudioStream()      
         {
@@ -42,12 +40,6 @@ namespace AudioPlayer
             Console.WriteLine(loadProgress);
         }
 
-        public void pause()
-        {
-            waveOut.Pause();
-            Console.WriteLine("paused");
-        }
-        
         public void initializeStream()
         {
             if (ms.Length > 65536)
@@ -64,11 +56,17 @@ namespace AudioPlayer
 
         public void play()
         {
-            if (ms.Position < ms.Length - 65536)
+            if (waveOut != null)
             {
                 waveOut.Play();
                 Console.WriteLine("playing");
-            }
+            }      
         }
+
+        public void pause()
+        {
+            waveOut.Pause();
+            Console.WriteLine("paused");
+        }       
     }
 }

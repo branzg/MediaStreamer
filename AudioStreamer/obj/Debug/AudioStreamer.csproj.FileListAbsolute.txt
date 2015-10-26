@@ -26,9 +26,7 @@ C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.p
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\AudioStreamer.exe
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\AudioStreamer.pdb
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MainWindow.baml
-C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MediaPlayer.baml
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MainWindow.g.cs
-C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MediaPlayer.g.cs
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\App.g.cs
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer_Content.g.cs
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer_MarkupCompile.cache

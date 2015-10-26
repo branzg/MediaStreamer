@@ -46,7 +46,7 @@ namespace AudioPlayer
                     Console.Write(e.Message);
                 }
 
-                //Console.WriteLine("Sending Complete");
+                Console.WriteLine("Sending Complete");
                 //break;
             }
         }

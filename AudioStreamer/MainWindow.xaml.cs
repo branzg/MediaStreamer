@@ -20,32 +20,31 @@ namespace AudioPlayer
             InitializeComponent();          
         }
 
-        //BFT TODO: Rename this function, fix its formatting
         private void Server_Click(object sender, RoutedEventArgs e)
         {
             Thread newServerThread = new Thread(new ThreadStart(() =>
-                {      
-                    TCPServer server = new TCPServer();
-                    server.Server();
-                    System.Windows.Threading.Dispatcher.Run();
-                }));
+            {      
+                TCPServer server = new TCPServer();
+                server.Server();
+                System.Windows.Threading.Dispatcher.Run();
+            }));
             newServerThread.SetApartmentState(ApartmentState.STA);
             newServerThread.IsBackground = true;
             newServerThread.Start();
         }
-        //BFT TODO: Rename this function, fix its formatting
+
         private void Client_Click(object sender, RoutedEventArgs e)
         {
             Thread newClientThread = new Thread(new ThreadStart(() =>
+            {
+                audioStream = new AudioStream();
+                audioStreamLoader = new AudioStreamLoader(audioStream);
+                new Thread(delegate()
                 {
-                    audioStream = new AudioStream();
-                    audioStreamLoader = new AudioStreamLoader(audioStream);
-                    new Thread(delegate()
-                    {
-                        audioStreamLoader.streamAudio();
-                    }).Start();
-                    System.Windows.Threading.Dispatcher.Run();
-                }));
+                    audioStreamLoader.streamAudio();
+                }).Start();
+                System.Windows.Threading.Dispatcher.Run();
+            }));
             newClientThread.SetApartmentState(ApartmentState.STA);
             newClientThread.IsBackground = true;
             newClientThread.Start();         
