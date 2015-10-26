@@ -13,12 +13,15 @@ namespace AudioPlayer
 {
     public partial class Program : Window
     {
+        AudioStream audioStream;
+        AudioStreamLoader audioStreamLoader;
         public Program()
         {
-            InitializeComponent();         
+            InitializeComponent();          
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        //BFT TODO: Rename this function, fix its formatting
+        private void Server_Click(object sender, RoutedEventArgs e)
         {
             Thread newServerThread = new Thread(new ThreadStart(() =>
                 {      
@@ -26,25 +29,36 @@ namespace AudioPlayer
                     server.Server();
                     System.Windows.Threading.Dispatcher.Run();
                 }));
-        newServerThread.SetApartmentState(ApartmentState.STA);
-        newServerThread.IsBackground = true;
-        newServerThread.Start();
+            newServerThread.SetApartmentState(ApartmentState.STA);
+            newServerThread.IsBackground = true;
+            newServerThread.Start();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        //BFT TODO: Rename this function, fix its formatting
+        private void Client_Click(object sender, RoutedEventArgs e)
         {
             Thread newClientThread = new Thread(new ThreadStart(() =>
                 {
-                   ClientPlayer clientPlayer = new ClientPlayer();
-                   // clientPlayer.Show();
-                    //clientPlayer.PlayMp3FromServer();
-                    TCPClient client = new TCPClient();
-                    client.PlayMp3FromServer();
+                    audioStream = new AudioStream();
+                    audioStreamLoader = new AudioStreamLoader(audioStream);
+                    new Thread(delegate()
+                    {
+                        audioStreamLoader.streamAudio();
+                    }).Start();
                     System.Windows.Threading.Dispatcher.Run();
                 }));
-        newClientThread.SetApartmentState(ApartmentState.STA);
-        newClientThread.IsBackground = true;
-        newClientThread.Start();
-            
+            newClientThread.SetApartmentState(ApartmentState.STA);
+            newClientThread.IsBackground = true;
+            newClientThread.Start();         
+        }
+
+        private void pause_buttton_click(object sender, RoutedEventArgs e)
+        {
+            audioStream.pause();
+        }
+
+        private void play_button_click(object sender, RoutedEventArgs e)
+        {
+            audioStream.play();           
         }
     }          
 }

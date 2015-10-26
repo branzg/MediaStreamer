@@ -25,7 +25,6 @@ C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.e
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.pdb
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\AudioStreamer.exe
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\AudioStreamer.pdb
-C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.csprojResolveAssemblyReference.cache
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MainWindow.baml
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MediaPlayer.baml
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MainWindow.g.cs
@@ -44,7 +43,6 @@ C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.exe
 C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.pdb
 C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\AudioStreamer.exe
 C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\AudioStreamer.pdb
-C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.csprojResolveAssemblyReference.cache
 C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MainWindow.baml
 C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MediaPlayer.baml
 C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\MainWindow.g.cs
@@ -63,3 +61,8 @@ C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\NAudio.dll
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\NAudio.xml
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\ClientPlayer.baml
 C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\ClientPlayer.g.cs
+C:\Users\bguild_be\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\AudioStreamer.csprojResolveAssemblyReference.cache
+C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\NAudio.dll
+C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\bin\Debug\NAudio.xml
+C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\ClientPlayer.baml
+C:\Users\BG\Dropbox\AudioStreamer\AudioStreamer\obj\Debug\ClientPlayer.g.cs

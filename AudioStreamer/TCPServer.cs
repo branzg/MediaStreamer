@@ -18,18 +18,16 @@ namespace AudioPlayer
         {
             TcpListener tcpListener = new TcpListener(IPAddress.Any, 8885);
             tcpListener.Start();
-
             Console.WriteLine("Server started");
 
             while (true)
             {
-
                 TcpClient tcpClient = tcpListener.AcceptTcpClient();
                 Console.WriteLine("Connected to client");
 
                 try
                 {
-                    string fileName = @"C:\Users\bguild_be\Desktop\Maids.mp3";
+                    string fileName = @"C:\users\bguild_be\Desktop\Maids.mp3";
                     StreamWriter sWriter = new StreamWriter(tcpClient.GetStream());
 
                     byte[] bytes = File.ReadAllBytes(fileName);
@@ -48,8 +46,8 @@ namespace AudioPlayer
                     Console.Write(e.Message);
                 }
 
-                Console.WriteLine("Sending Complete");
-                break;
+                //Console.WriteLine("Sending Complete");
+                //break;
             }
         }
     }

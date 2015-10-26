@@ -63,7 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Client.cs" />
+    <Compile Include="AudioStreamLoader.cs" />
+    <Compile Include="AudioStream.cs" />
     <Compile Include="ClientPlayer.xaml.cs">
       <DependentUpon>ClientPlayer.xaml</DependentUpon>
     </Compile>
